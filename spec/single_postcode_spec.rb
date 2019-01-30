@@ -14,11 +14,12 @@ describe Postcodesio do
     
     it 'should respond with a results with a type of hash of keys for results' do
       expect(@single_postcode_service.retrieve_result).to be_kind_of(Hash)
-      p @single_postcode_service.retrieve_result_postcode
+      # p @single_postcode_service.retrieve_result_postcode
     end
 
-    it 'should respond with a result limit of 6-8 characters'
-       expect(@single_postcode_service.retrieve_result).to eq < 8
+    it 'should respond with a result limit of 6-8 characters' do
+       expect(@single_postcode_service.retrieve_result_postcode).to be_between(6,8)
+
     end
     it 'should pass if quality are type of a integer' do 
       expect(@single_postcode_service.retrieve_quality).to be_kind_of(Integer)
@@ -49,11 +50,11 @@ describe Postcodesio do
     end
 
     it 'should expect longitude to within uk territories' do
-      expect(@single_postcode_service.retrieve_longitude).to eq < 10000
+      expect(@single_postcode_service.retrieve_longitude).to be_between(-8,2) 
     end
 
     it 'should expect longitude to within uk territories' do
-      expect(@single_postcode_service.retrieve_longitude).to eq < 10000
+      expect(@single_postcode_service.retrieve_latitude).to be_between(50,62) 
     end
 
     it 'should pass if european electoral region are type of a string' do 
@@ -121,6 +122,7 @@ describe Postcodesio do
     end
 
   end
+
 
 
 end
